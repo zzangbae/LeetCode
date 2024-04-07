@@ -7,32 +7,7 @@ class Solution(object):
         :type n: int
         :rtype: None Do not return anything, modify nums1 in-place instead.
         """
-        i = 0
-        j = 0
-        ans = [0] * (m + n)
-        while True:
-            if i == m and j == n:
-                break
-            elif i == m and j != n:
-                ans[i + j:] = nums2[j:n]
-                break
-            elif i != m and j == n:
-                ans[i + j:] = nums1[i:m]
-                break
-            else:
-                num1 = nums1[i]
-                num2 = nums2[j]
-                if num1 < num2:
-                    ans[i + j] = num1
-                    i += 1
-                elif num1 > num2:
-                    ans[i + j] = num2
-                    j += 1
-                else:
-                    ans[i + j] = num1
-                    ans[i + j + 1] = num2
-                    i += 1
-                    j += 1
-        nums1[:] = ans[:]
-        return nums1
+        for j in range(n):
+            nums1[m + j] = nums2[j]
+        nums1.sort()
         
